@@ -9561,8 +9561,9 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .new-page-section {
+  padding: 0;
   font-size: 1rem;
-  line-height: 0.5rem;
+  line-height: 1rem;
 }
 
 @media (min-width: 992px) {
