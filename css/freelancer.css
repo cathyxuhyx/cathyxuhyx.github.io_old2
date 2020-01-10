@@ -9552,18 +9552,23 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .page-section {
-  padding: 6rem 0;
+  padding: 5rem 0;
 }
 
 .page-section .page-section-heading {
-  font-size: 2.25rem;
+  font-size: 2rem;
   line-height: 2rem;
+}
+
+.new-page-section {
+  padding: 5rem 0;
+  font-size: 1rem;
 }
 
 @media (min-width: 992px) {
   .page-section .page-section-heading {
-    font-size: 3rem;
-    line-height: 2.5rem;
+    font-size: 2rem;
+    line-height: 2rem;
   }
 }
 
