@@ -1,0 +1,44 @@
+---
+title: "Natural • Artificial -- North Etobicoke"
+author: "Hanyong Xu"
+date: "2018 Spring"
+output:
+  html_document:
+    toc: FALSE
+    toc_float: true
+    prettydoc::html_pretty:
+    theme: cosmo
+    highlight: tango
+---
+<style>
+.superbigimage{
+overflow-x:scroll;
+white-space: nowrap;
+}
+.superbigimage img{
+max-width: none;
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	fig.align = "center",
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	results = FALSE
+)
+options(scipen=99)
+```
+
+- How do natural ravine and man-made hydro corridor affect the surrounding neighbourhoods?
+
+I explored this through a thorough study of North Etobicoke region near the Mimico Creek in regards to the residential accessibility to the natural ravine and artificial hydro-corridor as well as the effect of vegetation barrier on sound levels. Through careful data collection, I found the noise levels are relatively high at where the ravine meets the major street.
+
+![](img/portfolio/undergrad/l5.jpg)
+![](img/portfolio/undergrad/l6.jpg)
+![](img/portfolio/undergrad/l7.jpg)
+
+
+
