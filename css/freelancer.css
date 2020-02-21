@@ -159,7 +159,7 @@ sup {
 }
 
 a {
-  color: #fff;
+  color: #000000;
   text-decoration: none;
   background-color: transparent;
 }
@@ -219,6 +219,14 @@ caption {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   color: #6c757d;
+  text-align: left;
+  caption-side: bottom;
+}
+
+caption1 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  color: #000000;
   text-align: left;
   caption-side: bottom;
 }
