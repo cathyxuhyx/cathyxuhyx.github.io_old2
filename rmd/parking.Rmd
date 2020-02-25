@@ -1,0 +1,45 @@
+---
+title: "Parking Violations -- Philadelphia"
+author: "Hanyong Xu"
+date: "2019 Fall"
+output:
+  html_document:
+    toc: FALSE
+    toc_float: true
+    prettydoc::html_pretty:
+    theme: cosmo
+    highlight: tango
+---
+<style>
+.superbigimage{
+overflow-x:scroll;
+white-space: nowrap;
+}
+.superbigimage img{
+max-width: none;
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	fig.align = "center",
+	message = FALSE,
+	warning = FALSE,
+	cache = FALSE,
+	results = FALSE
+)
+options(scipen=99)
+```
+
+- How does parking violation change across time in Philadelphia?
+
+
+## Parking Violations acorss Time in a Day
+![](../img/portfolio/parking_vio.gif)
+
+## Parking Violations acorss Different Years
+![](../img/portfolio/parking_vio1.gif)
+
+
+
