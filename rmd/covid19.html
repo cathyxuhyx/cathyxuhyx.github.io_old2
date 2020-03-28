@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div id="intro">
+        <h1>COVID-19 Occurrence Map <span id="date">&nbsp</span></h1>
+        <p class="main">COVID-19 is impacting the world in multiple ways.</p>
+        <p>This application shows the number of COVID-19 instances in each
+          county/province as of yesterday. The color intensities and sizes of the circles
+          represent the number of cases. To get more information about any specific
+          county/province, click on the respective circle on the map.</p>
+        <h2>US counties with the highest confirmed cases:</h2>
+        <a>1:<span id="Top1"></span></a><br>
+        <a>2:<span id="Top2"></span></a><br>
+        <a>3:<span id="Top3"></span></a><br>
+        <a>4:<span id="Top4"></span></a><br>
+        <a>5:<span id="Top5"></span></a>
+      </div>
+      <div id="results" style="display: none;">
+        <button style="position: absolute;right:20px;top:20px;color:black">Close</button>
+        <h1><span class="city"></span> | <span id="state"></span></h1>
+        <p class="main">As of <span id="month"></span> <span id="day">, </span>
+          <span id="year"></span>, there are<br>
+          <span id="confirmed"></span> confirmed cases, <br>
+          <span id="death"></span> deaths,<br>
+          <span id="recovered"></span> recovered cases, and<br>
+          <span id="active"></span> active cases in
+          <span class="city"></span>.</p>
+        </p>
+      </div>
+      <div class="sharing">
+        <a href="https://github.com/CSSEGISandData/COVID-19" class="sharing__item" target="_blank">
+          Data Source</a>
+        <a>&nbsp&nbsp&nbsp&nbsp</a>
+        <a href="https://hanyongxu.com/" class="sharing__item" target="_blank">Contact Author</a>
+      </div>
+    </div>
+    <!-- Map -->
+    <div id="map" class="map"></div>
+    <!-- Legend -->
+    <!-- <div class="legend">
+      <b>Legend&nbsp&nbsp</b>
+      <span id = "rec" style="background-color:red;"></span>
+      <a>Monday&nbsp&nbsp</a>
+      <span id = "rec" style="background-color:yellow;"></span>
+      <a>Tuesday&nbsp&nbsp</a>
+      <span id = "rec" style="background-color:green;"></span>
+      <a>Wednesday&nbsp&nbsp</a>
+      <span id = "rec" style="background-color:blue;"></span>
+      <a>Thursday&nbsp&nbsp</a>
+      <span id = "rec" style="background-color:purple;"></span>
+      <a>Friday</a>
+    </div> -->
+
+    <!-- Javascript Imports -->
+    <script src="js/jquery-2.2.0.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/midtermFunctions.js"></script>
+    <script src="js/slideModel.js"></script>
+  </body>
+</html>
