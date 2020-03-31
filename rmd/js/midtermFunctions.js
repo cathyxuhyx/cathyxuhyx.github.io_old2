@@ -3,8 +3,8 @@ Week 6 Assignment: Midterm Functions + Signatures
 ================================ */
 //Leaflet Configuration
 var map = L.map('map', {
-  center: [39.0902, -95.7129],
-  zoom: 5
+  center: [35.584675, 10.114703],
+  zoom: 2
 });
 
 map.options.maxZoom = 10;
@@ -28,8 +28,6 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 
 //define variables and dataset links
 var dataset = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/"+yesterday+".csv";
-//var dataset = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-26-2020.csv";
-var census = "link here";
 var featureGroup;
 
 //define colors or size of the individual marker with respect to covid 19 cases
@@ -118,9 +116,11 @@ var makeMarkers = function (data) {
   addmarker = _.map(_.rest(data), function (row) {
     lat = row[5];
     lng = row[6];
+    //map.createPane("marker");
+    //map.getPane("marker").style.zIndex = 999;
     //console.log(lat, lng);
-    if (!!lat && !!lng) {
-    return L.circleMarker([lat, lng], myStyle(row));
+    if (!!lat && typeof(lng)!=="undefined") {
+      return L.circleMarker([lat, lng], myStyle(row));
   }});
   return addmarker;
 };
@@ -138,6 +138,7 @@ var joinFunction = function(cases, census){ };
 //show results
 var showResults = function() {
   $('#intro').hide();
+  $('#USonly').hide();
   // => <div id="results">
   $('#results').show();
 };
@@ -145,9 +146,10 @@ var showResults = function() {
 //close results and return to original state
 var closeResults = function() {
   $('#intro').show();
+  $('#USonly').hide();
   $('#results').hide();
   //map.fitBounds(markers.getBounds());
-  map.setView([39.0902, -95.7129], 5);
+  map.setView([38.8, -97.6129], 4);
 };
 
 //change side bar information with respect to each country
@@ -157,7 +159,8 @@ var eachFeatureFunction = function(marker) {
       //console.log(event);
       //console.log(event.target.options.City);
       $(".city").text(event.target.options.City);
-      $("#state").text(event.target.options.State);
+      $(".state").text(event.target.options.State);
+      $(".country").text(event.target.options.Country);
       $("#confirmed").text(event.target.options.Confirmed);
       $("#death").text(event.target.options.Death);
       $("#recovered").text(event.target.options.Recovered);
@@ -209,3 +212,95 @@ $(document).ready(function() {
   });
 });
 $("button").click(function() {closeResults();});
+$("button#world").click(function() {
+  $('#intro').show();
+  $('#USonly').hide();
+  $('#results').hide();
+  //map.fitBounds(markers.getBounds());
+  map.setView([35.584675, 10.114703],2);});
+
+//US only results:
+var US_only = function(){
+  $('#intro').hide();
+  $('#USonly').show();
+  $('#results').hide();
+  map.setView([38.8, -97.6129], 4);
+};
+
+//query and display census data
+//styling function for total population
+var censusstyle1 = function(feature) {
+    return feature.properties.B00001_001E > 500000 ? {fillColor: "#0c2c84"}
+      : feature.properties.B00001_001E > 24000 ? {fillColor: "#225ea8"}
+      : feature.properties.B00001_001E > 9000 ? {fillColor: "#1d91c0"}
+      : feature.properties.B00001_001E > 3800 ? {fillColor: "#41b6c4"}
+      : feature.properties.B00001_001E > 2000 ? {fillColor: "#7fcdbb"}
+      : feature.properties.B00001_001E > 1200 ? {fillColor: "#c7e9b4"}
+      : {fillColor: "#FFF"};
+  };
+
+//styling function for elder population density
+var censusstyle = function(feature) {
+    return feature.properties.DP05_0024PE > 45 ? {fillColor: "#BD0026"}
+      : feature.properties.DP05_0024PE > 35 ? {fillColor: "#E31A1C"}
+      : feature.properties.DP05_0024PE > 25 ? {fillColor: "#FC4E2A"}
+      : feature.properties.DP05_0024PE > 15 ? {fillColor: "#FD8D3C"}
+      : feature.properties.DP05_0024PE > 5 ? {fillColor: "#FEB24C"}
+      : {fillColor: "#FFF"};
+  };
+
+//population counts
+var cens_pop;
+$("button#population").click(function() {
+  census(
+    {
+      vintage: "2018",
+      geoHierarchy: {
+        county: "*"
+      },
+      geoResolution: "20m", // required,
+      sourcePath: ["acs", "acs5"],
+      values: ["B00001_001E"], // population count
+    }, function(error, response) {
+          cens_pop = L.geoJson(response.features, {
+        weight: 1, color: 'white', opacity: 0.6, style: censusstyle1});
+          cens_pop.addTo(map);
+    }
+  );
+  US_only();
+});
+
+//old ppl population counts
+var elder_pop;
+$("button#elder").click(function() {
+  census(
+    {
+      vintage: "2018",
+      geoHierarchy: {
+        county: "*"
+      },
+      geoResolution: "20m", // required,
+      sourcePath: ["acs", "acs5","profile"],
+      values: ["DP05_0024PE"], // elders population count
+    }, function(error, response) {
+          elder_pop = L.geoJson(response.features, {
+        weight: 1, color: 'white', opacity: 0.6, style: censusstyle});
+          elder_pop.addTo(map);
+    }
+  );
+  US_only();
+});
+
+$("button#clear").click(function() {
+  US_only();
+  if (typeof(cens_pop) !== "undefined"){
+    map.removeLayer(cens_pop);
+  }
+  if (typeof(elder_pop) !== "undefined"){
+    map.removeLayer(elder_pop);
+  }
+});
+
+$("button#USresult").click(function() {
+  US_only();
+});
