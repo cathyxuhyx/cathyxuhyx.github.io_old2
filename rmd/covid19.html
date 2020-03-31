@@ -5,35 +5,57 @@
     <!-- CSS Imports -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/leaflet.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/> -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <!-- Sidebar -->
     <div class="sidebar">
       <div id="intro">
-        <h1>COVID-19 Occurrence Map <span id="date">&nbsp</span></h1>
-        <p class="main">COVID-19 is impacting the world in multiple ways.</p>
+        <h1>COVID-19 Occurrence</h1>
+        <p class="main">Daily Report Map <span id="date">&nbsp</span></p>
         <p>This application shows the number of COVID-19 instances in each
-          county/province as of yesterday. The color intensities and sizes of the circles
-          represent the number of cases. To get more information about any specific
-          county/province, click on the respective circle on the map.</p>
+          county/province, automatically updated daily. The color intensities
+          and sizes of the circles represent the number of cases. To get more
+          information about any specific county/province/country, click on the
+          respective circle on the map.</p>
+        <br><br>
+        <button id = "USresult">Show US cases only</button>
+      </div>
+      <div id="USonly"  style="display: none;">
+        <h1>COVID-19 Occurrence</h1>
+        <p class="main">Daily Report Map <span id="date">&nbsp</span></p>
+        <p>To get more information about any specific county, click on the
+          respective circle on the map.</p>
         <h2>US counties with the highest confirmed cases:</h2>
         <a>1:<span id="Top1"></span></a><br>
         <a>2:<span id="Top2"></span></a><br>
         <a>3:<span id="Top3"></span></a><br>
         <a>4:<span id="Top4"></span></a><br>
         <a>5:<span id="Top5"></span></a>
+        <br><br>
+        <button id = "population">Show total population</button>
+        <br><br>
+        <button id = "elder">Show percentage of 65 years and over</button>
+        <br><br>
+        <button id = "clear">Clear</button>
+        <br><br>
+        <button id = "world">Return to World Map</button>
       </div>
       <div id="results" style="display: none;">
-        <button style="position: absolute;right:20px;top:20px;color:black">Close</button>
-        <h1><span class="city"></span> | <span id="state"></span></h1>
+        <button style="position: absolute;right:20px;top:20px">Close</button>
+        <h1><span class="city"></span>|<span class="state"></span>|<span class="country"></span></h1>
         <p class="main">As of <span id="month"></span> <span id="day">, </span>
           <span id="year"></span>, there are<br>
           <span id="confirmed"></span> confirmed cases, <br>
-          <span id="death"></span> deaths,<br>
-          <span id="recovered"></span> recovered cases, and<br>
-          <span id="active"></span> active cases in
-          <span class="city"></span>.</p>
+          <span id="death"></span> deaths, and<br>
+          <span id="recovered"></span> recovered cases in<br>
+          <!-- <span id="active"></span> active cases -->
+          <span class="city"></span>
+          <span class="state"></span>
+          <span class="country"></span>.</p>
         </p>
       </div>
       <div class="sharing">
@@ -63,7 +85,11 @@
     <!-- Javascript Imports -->
     <script src="js/jquery-2.2.0.js"></script>
     <script src="js/underscore.js"></script>
+    <script src="js/citysdk.js"></script>
     <script src="js/leaflet.js"></script>
+    <!-- <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script> -->
     <script src="js/midtermFunctions.js"></script>
     <script src="js/slideModel.js"></script>
   </body>
