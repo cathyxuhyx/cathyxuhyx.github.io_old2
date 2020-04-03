@@ -7,7 +7,7 @@ var map = L.map('map', {
   zoom: 2
 });
 
-map.options.maxZoom = 10;
+//map.options.maxZoom = 15;
 
 var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
   attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -21,14 +21,14 @@ var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{
 var today = new Date();
 today.setDate(today.getDate() - 1);
 console.log(today);
-var yesterday = (("00" + (today.getMonth() + 1)).slice(-2))+'-'+(("00" + (today.getDate() + 1)).slice(-2))+'-'+today.getFullYear();
+var yesterday = (("00" + (today.getMonth() + 1)).slice(-2))+'-'+(("00" + (today.getDate())).slice(-2))+'-'+today.getFullYear();
 $("#date").text(yesterday);
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"];
 
 //define variables and dataset links
 var dataset = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/"+yesterday+".csv";
-var featureGroup;
+var markers;
 
 //define colors or size of the individual marker with respect to covid 19 cases
 var myStyle = function(row) {
@@ -38,7 +38,7 @@ var myStyle = function(row) {
     if (confirmed < 100) {
       return {color: "red",
               fillColor: "#f03",
-              fillOpacity: 0.1,
+              opacity: 0.1,
               radius: 0.5,
               Country: row[3],
               State: row[2],
@@ -50,7 +50,7 @@ var myStyle = function(row) {
     } else if (confirmed < 500 && confirmed >= 100) {
       return {color: "red",
               fillColor: "#f03",
-              fillOpacity: 0.3,
+              opacity: 0.3,
               radius: 1,
               Country: row[3],
               State: row[2],
@@ -62,7 +62,7 @@ var myStyle = function(row) {
     } else if (confirmed < 1000 && confirmed >= 500) {
       return {color: "red",
               fillColor: "#f03",
-              fillOpacity: 0.4,
+              opacity: 0.4,
               radius: 4.0,
               Country: row[3],
               State: row[2],
@@ -114,26 +114,27 @@ var myStyle = function(row) {
 //function to plot the locations
 var makeMarkers = function (data) {
   addmarker = _.map(_.rest(data), function (row) {
-    lat = row[5];
-    lng = row[6];
-    //map.createPane("marker");
-    //map.getPane("marker").style.zIndex = 999;
-    //console.log(lat, lng);
-    if (!!lat && typeof(lng)!=="undefined") {
-      return L.circleMarker([lat, lng], myStyle(row));
-  }});
+    lat = Number(row[5]);
+    lng = Number(row[6]);
+    if (!isNaN(lat) && !isNaN(lng)) {
+      return L.circleMarker([lat, lng], myStyle(row));}
+});
   return addmarker;
 };
 
 // and puts them on the map
 var plotMarkers = function (marker) {
   _.each(marker, function (x){
-    if (typeof(x) != "undefined") {return x.addTo(map); }
+    if (typeof(x) !== "undefined") {return x.addTo(map); }
   });
 };
 
-//join the US data and the US census
-var joinFunction = function(cases, census){ };
+// Remove markers
+var removeMarkers = function (marker) {
+  _.each(marker, function (x){
+    if (typeof(x) !== "undefined") {return map.removeLayer(x);}
+  });
+};
 
 //show results
 var showResults = function() {
@@ -148,7 +149,6 @@ var closeResults = function() {
   $('#intro').show();
   $('#USonly').hide();
   $('#results').hide();
-  //map.fitBounds(markers.getBounds());
   map.setView([38.8, -97.6129], 4);
 };
 
@@ -156,8 +156,6 @@ var closeResults = function() {
 var eachFeatureFunction = function(marker) {
   if (typeof(marker) != "undefined") {
     marker.on('click', function(event) {
-      //console.log(event);
-      //console.log(event.target.options.City);
       $(".city").text(event.target.options.City);
       $(".state").text(event.target.options.State);
       $(".country").text(event.target.options.Country);
@@ -170,14 +168,15 @@ var eachFeatureFunction = function(marker) {
       $("#year").text(today.getFullYear());
       showResults();
       //zoom in to the selected region
-      bounds = event.target.getBounds();
-      map.fitBounds(bounds);
-
+      var tmp = event.target;
+      map.fitBounds([[tmp._latlng.lat-0.5, tmp._latlng.lng-0.5],
+        [tmp._latlng.lat+0.5, tmp._latlng.lng+0.5]]);
     });
   }
 
 };
 
+var notUS, US_marker;
 //run the analysis by start the request of the dataset
 $(document).ready(function() {
   $.ajax(dataset).done(function(data) {
@@ -187,15 +186,23 @@ $(document).ready(function() {
     worlddata = [];
     for (var i=0;i<rows.length;i=i+1){
         worlddata.push(rows[i].split(','));}
-    filtered_worlddata = _.filter(worlddata, function(row){return Number(row[7])>0;});
+    filtered_worlddata = _.filter(worlddata, function(row){
+      return Number(row[7])>0;});
 
     //make markers and plot them
     markers = makeMarkers(filtered_worlddata);
-    featureGroup = plotMarkers(markers);
+    // find non-US markers
+    var realmarkers = _.filter(markers, function(marker){
+      return typeof(marker) != "undefined";});
+    notUS = _.filter(realmarkers, function(marker) {
+      return marker.options.Country != "US";});
+    US_marker = _.filter(realmarkers, function(marker) {
+      return marker.options.Country == "US";});
+    plotMarkers(notUS);
+    plotMarkers(US_marker);
 
     //click event for each marker
     _.each(markers, function(marker){eachFeatureFunction(marker);});
-    //featureGroup.eachLayer(eachFeatureFunction);
 
     //see the highest number of cases cities in the US
     filtered = _.filter(worlddata, function(row){return row[3]=='US';} );
@@ -212,12 +219,7 @@ $(document).ready(function() {
   });
 });
 $("button").click(function() {closeResults();});
-$("button#world").click(function() {
-  $('#intro').show();
-  $('#USonly').hide();
-  $('#results').hide();
-  //map.fitBounds(markers.getBounds());
-  map.setView([35.584675, 10.114703],2);});
+
 
 //US only results:
 var US_only = function(){
@@ -226,6 +228,30 @@ var US_only = function(){
   $('#results').hide();
   map.setView([38.8, -97.6129], 4);
 };
+
+//button to return to the world
+$("button#world").click(function() {
+  $('#intro').show();
+  $('#USonly').hide();
+  $('#results').hide();
+  map.setView([35.584675, 10.114703],2);
+  //removeMarkers
+  var realmarkers = _.filter(markers, function(marker){
+    return typeof(marker) != "undefined";});
+  notUS = _.filter(realmarkers, function(marker) {
+    return marker.options.Country != "US";});
+  plotMarkers(notUS);
+
+  //remove legend
+  if (typeof(cens_pop) !== "undefined"){
+    map.removeLayer(cens_pop);
+    $('.legend#pop').hide();
+  }
+  if (typeof(elder_pop) !== "undefined"){
+    map.removeLayer(elder_pop);
+    $('.legend#elder').hide();
+  }
+});
 
 //query and display census data
 //styling function for total population
@@ -236,7 +262,7 @@ var censusstyle1 = function(feature) {
       : feature.properties.B00001_001E > 3800 ? {fillColor: "#41b6c4"}
       : feature.properties.B00001_001E > 2000 ? {fillColor: "#7fcdbb"}
       : feature.properties.B00001_001E > 1200 ? {fillColor: "#c7e9b4"}
-      : {fillColor: "#FFF"};
+      : {fillColor: "#ffffcc"};
   };
 
 //styling function for elder population density
@@ -252,6 +278,7 @@ var censusstyle = function(feature) {
 //population counts
 var cens_pop;
 $("button#population").click(function() {
+  $('.legend#pop').show();
   census(
     {
       vintage: "2018",
@@ -263,16 +290,22 @@ $("button#population").click(function() {
       values: ["B00001_001E"], // population count
     }, function(error, response) {
           cens_pop = L.geoJson(response.features, {
-        weight: 1, color: 'white', opacity: 0.6, style: censusstyle1});
+        weight: 0.5, color: 'white', fillOpacity: 0.4, style: censusstyle1});
           cens_pop.addTo(map);
     }
   );
+
+  // //make markers and plot them
+  // markers = makeMarkers(filtered_worlddata);
+  // featureGroup = plotMarkers(markers);
   US_only();
 });
 
 //old ppl population counts
 var elder_pop;
 $("button#elder").click(function() {
+  $('.legend#elder').show();
+  US_only();
   census(
     {
       vintage: "2018",
@@ -284,23 +317,27 @@ $("button#elder").click(function() {
       values: ["DP05_0024PE"], // elders population count
     }, function(error, response) {
           elder_pop = L.geoJson(response.features, {
-        weight: 1, color: 'white', opacity: 0.6, style: censusstyle});
+        weight: 0.5, color: 'white', fillOpacity: 0.4, style: censusstyle});
           elder_pop.addTo(map);
     }
   );
-  US_only();
+
 });
 
 $("button#clear").click(function() {
   US_only();
   if (typeof(cens_pop) !== "undefined"){
     map.removeLayer(cens_pop);
+    $('.legend#pop').hide();
   }
   if (typeof(elder_pop) !== "undefined"){
     map.removeLayer(elder_pop);
+    $('.legend#elder').hide();
   }
 });
 
 $("button#USresult").click(function() {
+  removeMarkers(notUS);
+  //plotMarkers(US_marker);
   US_only();
 });
