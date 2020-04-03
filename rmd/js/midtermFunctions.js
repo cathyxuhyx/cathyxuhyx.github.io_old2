@@ -21,7 +21,7 @@ var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{
 var today = new Date();
 today.setDate(today.getDate() - 1);
 console.log(today);
-var yesterday = (("00" + (today.getMonth() + 1)).slice(-2))+'-'+(today.getDate())+'-'+today.getFullYear();
+var yesterday = (("00" + (today.getMonth() + 1)).slice(-2))+'-'+(("00" + (today.getDate() + 1)).slice(-2))+'-'+today.getFullYear();
 $("#date").text(yesterday);
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"];
