@@ -184,7 +184,7 @@ a:not([href]):not([tabindex]):focus {
 }
 
 .css-typing p {
-  border-right: .15em solid pink;
+  border-right: .15em solid #ff99a6;
   margin-bottom: 0;
   font-weight: 300;
   font-family: Lato light;
@@ -225,7 +225,7 @@ a:not([href]):not([tabindex]):focus {
   animation-fill-mode: forwards;
 }
 .css-typing p:nth-child(4) {
-  width: 25.8em;
+  width: 27.4em;
   opacity: 0;
   -webkit-animation: type2 2s steps(30, end);
   animation: type2 2s steps(30, end);
@@ -260,7 +260,7 @@ a:not([href]):not([tabindex]):focus {
     width: 0;
   }
   99.9% {
-    border-right: .15em solid pink;
+    border-right: .15em solid #ff99a6;
   }
   100% {
     border: none;
@@ -272,7 +272,7 @@ a:not([href]):not([tabindex]):focus {
     width: 0;
   }
   99.9% {
-    border-right: .15em solid pink;
+    border-right: .15em solid #ff99a6;
   }
   100% {
     border: none;
@@ -287,7 +287,7 @@ a:not([href]):not([tabindex]):focus {
     opacity: 1;
   }
   99.9% {
-    border-right: .15em solid pink;
+    border-right: .15em solid #ff99a6;
   }
   100% {
     opacity: 1;
@@ -303,7 +303,7 @@ a:not([href]):not([tabindex]):focus {
     opacity: 1;
   }
   99.9% {
-    border-right: .15em solid pink;
+    border-right: .15em solid #ff99a6;
   }
   100% {
     opacity: 1;
