@@ -71,7 +71,7 @@ var myStyle = function(row) {
               Death: row[8],
               Recovered: row[9],
               Active: row[10]};
-    } else if (confirmed < 1500 && confirmed >= 1000) {
+    } else if (confirmed < 5000 && confirmed >= 1000) {
       return {color: "red",
               fillColor: "#f03",
               fillOpacity: 0.5,
@@ -83,7 +83,7 @@ var myStyle = function(row) {
               Death: row[8],
               Recovered: row[9],
               Active: row[10]};
-    } else if (confirmed < 2000 && confirmed >= 1500) {
+    } else if (confirmed < 10000 && confirmed >= 5000) {
       return {color: "red",
               fillColor: "#f03",
               fillOpacity: 0.6,
@@ -95,7 +95,7 @@ var myStyle = function(row) {
               Death: row[8],
               Recovered: row[9],
               Active: row[10]};
-    } else if (confirmed >= 2000) {
+    } else if (confirmed >= 10000) {
       return {color: "red",
               fillColor: "#f03",
               fillOpacity: 0.7,
