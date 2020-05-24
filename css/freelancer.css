@@ -159,7 +159,7 @@ sup {
 }
 
 a {
-  color: #000000;
+  color: #fff;
   text-decoration: none;
   background-color: transparent;
 }
@@ -386,7 +386,7 @@ caption {
   caption-side: bottom;
 }
 
-caption1 {
+.caption1 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   color: #000000;
