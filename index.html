@@ -35,7 +35,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Hanyong Xu Portfolio</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Hanyong Xu</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -43,10 +43,16 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Portfolio</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Projects</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#writings">Writings</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#designs">Designs</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Bio</a>
           </li>
         </ul>
       </div>
@@ -58,17 +64,21 @@
     <div class="d-flex align-items-center flex-column">
 
       <!-- Masthead Heading -->
-      <div class="css-typing masthead-heading font-weight-light mb-0">
+      <!-- <div class="css-typing masthead-heading font-weight-light mb-0">
         <p>Hello, My name is Hanyong Xu</p>
         <p><br><br></p>
         <p>As a data analyst, I solve complex problems to facilitate</p>
         <p>urban planning, business development, and public policymaking.</p>
         <p><br><br></p>
         <p>Master of Urban Spatial Analytics'20 @ the University of Pennsylvania</p>
-      </div>
+      </div> -->
 
       <!-- Masthead Subheading -->
-      <!-- <p class="masthead-subheading font-weight-light mb-0"><br></br>As a data analyst, I solve complex problems to facilitate<br>urban planning, applied economics, and public policymaking.<br><br> Master of Urban Spatial Analytics'20  @  the University of Pennsylvania</p> -->
+      <p class="masthead-subheading font-weight-light mb-0">
+        I seek to leverage the power of data science, visualization, and web development<br>
+        to lead better urban planning, public policy making, and business growth.<br><br> 
+        Master of Urban Spatial Analytics'20  @  the University of Pennsylvania <br>
+        Currently working  @  Meituan as a data analyst.</p>
 
     </div>
   </header>
@@ -78,19 +88,32 @@
     <div class="container">
 
       <!-- Portfolio Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+      <!-- <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2> -->
 
       <!-- Icon Divider -->
-      <div class="divider-custom">
+      <!-- <div class="divider-custom">
         <div class="divider-custom-line"></div>
-      </div>
+      </div> -->
 
-      <h4 class="new-page-section"><br></br>Predictive Modeling / Machine Learning with R<br></br></h4>
-
+      <h3 class="new-page-section">Predictive Modeling and Analysis<br></br></h3>
+        <br></br>
       <!-- Portfolio Grid Items -->
       <div class="row">
 
         <!-- Portfolio Item 1 -->
+
+        <div class="col-md-6 col-lg-3">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
+            <a href="https://pennmusa.github.io/MUSA_801.io/project_17/index.html" target="_blank">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white"></div>
+            </div></a>
+            <img class="img-fluid" src="img/portfolio/tx.jpg" alt="">
+          </div>
+          <a class="caption1" href="https://pennmusa.github.io/MUSA_801.io/project_17/index.html" target="_blank"><b>Transit Ridership Prediction and Scenario Building in Austin</b></a>
+          <p class="caption">Skills used: R, Random Forest, XGBoost, Scenario Testing<br></br></p>
+        </div>
+
         <div class="col-md-6 col-lg-3">
           <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
             <a href="rmd/train_occupancy_prediction.html" target="_blank">
@@ -106,51 +129,18 @@
 
         <div class="col-md-6 col-lg-3">
           <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-            <a href="https://pennmusa.github.io/MUSA_801.io/project_17/index.html" target="_blank">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+            <a href="rmd/eurosat_deeplearning.html" target="_blank">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
               <div class="portfolio-item-caption-content text-center text-white"></div>
             </div></a>
-            <img class="img-fluid" src="img/portfolio/tx.jpg" alt="">
+            <img class="img-fluid" src="img/portfolio/eurosat.PNG" alt="">
           </div>
-          <a class="caption1" href="https://pennmusa.github.io/MUSA_801.io/project_17/index.html" target="_blank"><b>Transit Ridership Prediction and Scenario Building in Austin</b></a>
-          <p class="caption">Skills used: R, Random Forest, XGBoost, Scenario Testing<br></br></p>
+          <a class="caption1" href="rmd/eurosat_deeplearning.html" target="_blank"><b>Eurosat Image Classification with Deep Learning</b></a>
+          <p class="caption">Skill used: Python, Keras, CNN, VGG16<br></br></p>
         </div>
 
-        <!-- Portfolio Item 3 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-            <a href="rmd/battery_risk_prediction.html" target="_blank">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"></div>
-            </div></a>
-            <img class="img-fluid" src="img/portfolio/chicago.jpg" alt="">
-          </div>
-          <a class="caption1" href="rmd/battery_risk_prediction.html" target="_blank"><b>Domestic Batteries Prediction in Chicago</b></a>
-          <p class="caption">Skills used: R, Poisson Regression Model<br></br></p>
-        </div>
 
-        <!-- Portfolio Item 2 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-            <a href="rmd/house_price_prediction.html" target="_blank">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"></div>
-            </div></a>
-            <img class="img-fluid" src="img/portfolio/sf_.jpg" alt="">
-          </div>
-          <a class="caption1" href="rmd/house_price_prediction.html" target="_blank"><b>Home Prices Prediction in San Francisco</b></a>
-          <p class="caption">Skills used: R, OLS Modeling, Spatial Lag<br></br></p>
-        </div>
 
-     </div>
-      <!-- /.row -->
-
-<hr>
-<h3 class="new-page-section"><br></br>Machine Learning / Data Analytics with Python<br></br></h3>
-
-<!-- Portfolio Grid Items -->
-      <div class="row">
-        <!-- Portfolio Item 4 -->
         <div class="col-md-6 col-lg-3">
           <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
             <a href="https://github.com/cathyxuhyx/Predicting-Food-Deserts.git" target="_blank">
@@ -168,31 +158,34 @@
           </p>
         </div>
 
-        <div class="col-md-6 col-lg-3">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
-            <a href="rmd/slum_prediction.pdf" target="_blank">
-              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"></div>
-            </div></a>
-            <img class="img-fluid" src="img/portfolio/slums.PNG" alt="">
-          </div>
-          <a class="caption1" href="rmd/slum_prediction.pdf" target="_blank"><b>Argentina Slums Identification with Deep Learning</b></a>
-          <p class="caption">Skill used: Python, Machine Learning (Scikit-learn), K-Means, SVM, Deep Learning (Keras), Convolutional Neural Network (CNN), ResNet<br></br></p>
+        
+      <!-- Portfolio Item 3 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
+          <a href="rmd/battery_risk_prediction.html" target="_blank">
+          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+            <div class="portfolio-item-caption-content text-center text-white"></div>
+          </div></a>
+          <img class="img-fluid" src="img/portfolio/chicago.jpg" alt="">
         </div>
+        <a class="caption1" href="rmd/battery_risk_prediction.html" target="_blank"><b>Domestic Batteries Prediction in Chicago</b></a>
+        <p class="caption">Skills used: R, Poisson Regression Model<br></br></p>
+      </div>
 
-      <!-- Portfolio Item 5 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
-            <a href="rmd/parking.html" target="_blank">
-              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"></div>
-            </div></a>
-            <img class="img-fluid" src="img/portfolio/parking_vio.gif" alt="">
-          </div>
-          <a class="caption1" href="rmd/parking.html" target="_blank"><b>Visualize Parking Violations in Philadelphia</b></a>
-          <p class="caption">Skill used: Python, datashader<br></br></p>
+      <!-- Portfolio Item 2 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
+          <a href="rmd/house_price_prediction.html" target="_blank">
+          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+            <div class="portfolio-item-caption-content text-center text-white"></div>
+          </div></a>
+          <img class="img-fluid" src="img/portfolio/sf_.jpg" alt="">
         </div>
+        <a class="caption1" href="rmd/house_price_prediction.html" target="_blank"><b>Home Prices Prediction in San Francisco</b></a>
+        <p class="caption">Skills used: R, OLS Modeling, Spatial Lag<br></br></p>
+      </div>
 
+        
         <div class="col-md-6 col-lg-3">
           <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
             <a href="https://mp.weixin.qq.com/s/vY0TkDsPvwZcCI6F8nBKbA" target="_blank">
@@ -216,7 +209,7 @@
           <a class="caption1" href="rmd/Craigslist.html" target="_blank"><b>Rent Price Analysis Scraping from Craigslist</b></a>
           <p class="caption">Skill used: Python, beautifulsoup<br></br></p>
         </div>
-
+<!-- 
         <div class="col-md-6 col-lg-3">
           <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
             <a href="rmd/Evictions.html" target="_blank">
@@ -227,7 +220,7 @@
           </div>
           <a class="caption1" href="rmd/Evictions.html" target="_blank"><b>Envictions in Philadelphia</b></a>
           <p class="caption">Skill used: Python, pandas, geopandas, HvPlot<br></br></p>
-        </div>
+        </div> -->
 
         <div class="col-md-6 col-lg-3">
           <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
@@ -242,22 +235,24 @@
         </div>
 
         <div class="col-md-6 col-lg-3">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-            <a href="rmd/eurosat_deeplearning.html" target="_blank">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+            <a href="rmd/urban_growth_suitability.pdf" target="_blank">
               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
               <div class="portfolio-item-caption-content text-center text-white"></div>
             </div></a>
-            <img class="img-fluid" src="img/portfolio/eurosat.PNG" alt="">
+            <img class="img-fluid" src="img/portfolio/pa.jpg" alt="">
           </div>
-          <a class="caption1" href="rmd/eurosat_deeplearning.html" target="_blank"><b>Eurosat Image Classification with Deep Learning</b></a>
-          <p class="caption">Skill used: Python, Keras, CNN, VGG16<br></br></p>
+          <a class="caption1" href="rmd/urban_growth_suitability.pdf" target="_blank"><b>Urban Growth Suitability Analysis</b></a>
+          <p class="caption">Skill used: ArcMap<br></br></p>
         </div>
+
+
 
       </div>
       <!-- /.row -->
 
 <hr>
-<h3 class="new-page-section"><br></br>Web Application Using Javascript<br></br></h3>
+<h3 class="new-page-section"><br></br>Web Application & Visualization<br></br></h3>
 
       <!-- Portfolio Grid Items -->
       <div class="row">
@@ -286,15 +281,51 @@
             <a class="caption1" href="rmd/austin/index.html" target="_blank"><b>Austin Transit Ridership Prediction and Visualization</b></a>
             <p class="caption">Skills used: Javascript, Leaflet, Billboard, HTML, CSS<br></br></p>
           </div>
-      </div>
 
+          <div class="col-md-6 col-lg-3">
+            <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
+              <a href="rmd/parking.html" target="_blank">
+                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white"></div>
+              </div></a>
+              <img class="img-fluid" src="img/portfolio/parking_vio.gif" alt="">
+            </div>
+            <a class="caption1" href="rmd/parking.html" target="_blank"><b>Visualize Parking Violations in Philadelphia</b></a>
+            <p class="caption">Skill used: Python, datashader<br></br></p>
+          </div>
+
+          
+      </div>
 <hr>
- <h3 class="new-page-section"><br></br>Environmental Spatial Analysis<br></br></h3>
+   <h3 class="new-page-section" id="writings"><br></br>Writings<br></br></h3>
+
 
       <!-- Portfolio Grid Items -->
       <div class="row">
+        <div class="col-md-6 col-lg-3">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
+            <a href="rmd/prediction_of_median_house_values.pdf" target="_blank">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white"></div>
+            </div></a>
+            <img class="img-fluid" src="img/portfolio/space-autocorrelate.png" alt="">
+          </div>
+          <a class="caption1" href="rmd/prediction_of_median_house_values.pdf" target="_blank"><b>Prediction of Median House Values in Philadelphia Block Groups</b></a>
+          <p class="caption">Predict Philadelphia house values with spatial lag, spatial error and geographically weighted regression (GWR).<br></br></p>
+        </div>
 
-        <!-- Portfolio Item 1 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
+            <a href="rmd/slum_prediction.pdf" target="_blank">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white"></div>
+            </div></a>
+            <img class="img-fluid" src="img/portfolio/slums.PNG" alt="">
+          </div>
+          <a class="caption1" href="rmd/slum_prediction.pdf" target="_blank"><b>Argentina Slums Identification with Deep Learning</b></a>
+          <p class="caption">Skill used: Python, Machine Learning (Scikit-learn), K-Means, SVM, Deep Learning (Keras), Convolutional Neural Network (CNN), ResNet<br></br></p>
+        </div>
+
         <div class="col-md-6 col-lg-3">
           <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
             <a href="rmd/high_carbon_stock_approach.pdf" target="_blank">
@@ -304,32 +335,10 @@
             <img class="img-fluid" src="img/portfolio/hcsa.PNG" alt="">
           </div>
           <a class="caption1" href="rmd/high_carbon_stock_approach.pdf" target="_blank"><b>Forests Patches Preservation<br>Using High Carbon Stock Approach</b></a>
-          <p class="caption">Skill used: Google Earth Engine<br></br></p>
+          <p class="caption">Find the viable forest patches that are of
+            the most conservation importance through patch analyses. Skill used: Google Earth Engine<br></br></p>
         </div>
 
-        <!-- Portfolio Item 2 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-            <a href="rmd/urban_growth_suitability.pdf" target="_blank">
-              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"></div>
-            </div></a>
-            <img class="img-fluid" src="img/portfolio/pa.jpg" alt="">
-          </div>
-          <a class="caption1" href="rmd/urban_growth_suitability.pdf" target="_blank"><b>Urban Growth Sutability Analysis</b></a>
-          <p class="caption">Skill used: ArcMap<br></br></p>
-        </div>
-
-     </div>
-      <!-- /.row -->
-      <hr>
-   <h3 class="new-page-section"><br></br>Writings<br></br></h3>
-
-
-      <!-- Portfolio Grid Items -->
-      <div class="row">
-
-        <!-- Portfolio Item 1 -->
         <div class="col-md-6 col-lg-3">
           <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
             <a href="rmd/recidivism.pdf" target="_blank">
@@ -346,7 +355,7 @@
 
 
 <hr>
- <h3 class="new-page-section"><br></br>Architecture and Landscape Design<br></br></h3>
+ <h3 class="new-page-section" id="designs"><br></br>Architecture and Landscape Design<br></br></h3>
 
       <!-- Portfolio Grid Items -->
       <div class="row">
@@ -470,9 +479,12 @@
   <footer class="footer text-center">
       <h2 class="page-section-heading text-center text-uppercase text-white">Connect with Me<br></br></h2>
     <!-- About Section Button -->
-      <a class="btn btn-outline-light btn-social mx-1" href="https://drive.google.com/file/d/16v-xx3OaMM_v2_yAiQ2NUPx6J0atQ5gy/view?usp=sharing"
-      target="_blank" alt="Resume">
-        <i class="fas fa-file-alt"></i> </a>
+    <a class="btn btn-outline-light mx-1" href="https://drive.google.com/file/d/16v-xx3OaMM_v2_yAiQ2NUPx6J0atQ5gy/view?usp=sharing"
+    target="_blank" alt="Resume">
+      <i class="fas fa-file-alt"></i> Resume</a>
+    <a class="btn btn-outline-light mx-1" href="https://drive.google.com/file/d/1N65tH9Aqeyjcxm7dxcnVxJ1UKJQoP7pJ/view?usp=sharing"
+    target="_blank" alt="CV">
+      <i class="fas fa-file-alt"></i> CV</a>
       <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/hanyong-xu/" target="_blank">
         <i class="fab fa-fw fa-linkedin-in"></i>
       </a>
@@ -487,7 +499,7 @@
   <!-- Copyright Section -->
   <section class="copyright py-4 text-center text-white">
     <div class="container">
-      <small>Copyright &copy; Hanyong Xu 2020. Built with <i class="fa fa-heart" aria-hidden="true"></i></small>
+      <small>Copyright &copy; Hanyong Xu 2022. Built with <i class="fa fa-heart" aria-hidden="true"></i></small>
     </div>
   </section>
 
